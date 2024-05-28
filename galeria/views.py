@@ -26,3 +26,9 @@ def buscar(request):
 
     return render(request, "galeria/buscar.html", {"cards": fotografias})
 
+def buscar(request):
+    tag = request.GET.get('tag', '')
+    # Aqui você busca os dados relacionados à tag
+    resultados = Modelo.objects.filter(tag__icontains=tag)  # Modifique conforme seu modelo de dados
+    return render(request, 'resultado_busca.html', {'resultados': resultados})
+
